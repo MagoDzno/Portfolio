@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 
 # Instanciar flask
@@ -7,9 +7,13 @@ app = Flask(__name__)
 
 
 # Crear rutas con sus funciones
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('/index.html')
+    if request.method == 'POST':
+        nombre = request.form['Nombre']
+        return render_template('/index.html', nombre=nombre)
+    else:
+        return render_template('/index.html')
 
 
 @app.route('/mis-proyectos', methods=['GET'])
