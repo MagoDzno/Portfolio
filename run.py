@@ -5,9 +5,9 @@ from flask import Flask
 
 app = Flask(__name__)
 
-# Crear rutas con sus funciones
 
-@app.route('/')
+# Crear rutas con sus funciones
+@app.route('/', methods=['GET'])
 def HolaMundo():
     return 'Hola mundo!'
 
@@ -17,6 +17,6 @@ def mostrarProyectos():
     return  'Estos son mis proyectos'
 
 
-# ejecucion
+# Ejecucion
 if __name__ == '__main__':
     app.run(debug=True)
